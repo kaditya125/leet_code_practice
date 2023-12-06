@@ -5,4 +5,5 @@ SELECT
 FROM
     Teacher
 GROUP BY
-    teacher_id;
+    teacher_id  
+    order by teacher_id desc;
