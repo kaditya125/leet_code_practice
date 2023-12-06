@@ -1,5 +1,3 @@
-import java.util.HashSet;
-import java.util.PriorityQueue;
 
 class Solution {
     public int thirdMax(int[] nums) {
