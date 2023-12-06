@@ -6,4 +6,4 @@ FROM
     Teacher
 GROUP BY
     teacher_id  
-    order by teacher_id desc;
+    order by teacher_id;
