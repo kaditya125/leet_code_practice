@@ -1,20 +1,17 @@
 class Solution {
     public List<String> stringMatching(String[] words) {
-        ArrayList<String> str = new ArrayList<>();
-        for(int i=0;i<words.length;i++)
-        {
-            for(int j=0;j<words.length;j++)
-            {
-                if(words[i].length()>=words[j].length())
-                {
-                    continue;
-                }else if(words[j].contains(words[i]))
-                {
-                    str.add(words[i]);
-                    break;
+        Set<String> result = new HashSet<>();
+
+        for (int i = 0; i < words.length - 1; i++) {
+            for (int j = i + 1; j < words.length; j++) {
+                if (words[j].contains(words[i])) {
+                    result.add(words[i]);
+                } else if (words[i].contains(words[j])) {
+                    result.add(words[j]);
                 }
             }
         }
-        return str;
+
+        return new ArrayList<>(result);
     }
 }
