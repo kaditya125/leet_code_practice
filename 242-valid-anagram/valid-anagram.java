@@ -7,11 +7,13 @@ class Solution {
         }
 
         HashMap<Character, Integer> map = new HashMap<>();
-        
+
+        // Count characters in string s
         for (char ch : s.toCharArray()) {
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
+        // Compare with characters in string t
         for (char ch : t.toCharArray()) {
             if (map.containsKey(ch)) {
                 map.put(ch, map.get(ch) - 1);
@@ -19,10 +21,10 @@ class Solution {
                     map.remove(ch);
                 }
             } else {
-                return false; 
+                return false; // Character not present in s
             }
         }
 
-        return map.isEmpty(); 
+        return map.isEmpty(); // Check if all characters in s are accounted for
     }
 }
