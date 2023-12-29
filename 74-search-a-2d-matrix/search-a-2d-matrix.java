@@ -1,9 +1,9 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        if(matrix==null || matrix.length==0 || matrix[0].length==0)
-        {
-            return false;
-        }
+        // if(matrix==null || matrix.length==0 || matrix[0].length==0)
+        // {
+        //     return false;
+        // }
 
         int left=0;
         int right= matrix[0].length-1;
