@@ -4,23 +4,19 @@ class Solution {
             return 0;
         }
 
-        int max = 1;  // Start from 1 because the minimum power is 1 for a non-empty string
-        int count = 1;
+        int max = 1;
+        int left = 0;
 
-        for (int i = 1; i < s.length(); i++) {
-            char ch1 = s.charAt(i - 1);
-            char ch2 = s.charAt(i);
+        for (int right = 1; right < s.length(); right++) {
+            char ch1 = s.charAt(right - 1);
+            char ch2 = s.charAt(right);
 
             if (ch1 == ch2) {
-                count++;
+                max = Math.max(max, right - left + 1);
             } else {
-                max = Math.max(max, count);
-                count = 1;  // Reset count for a new character
+                left = right;
             }
         }
-
-        // Check the last sequence
-        max = Math.max(max, count);
 
         return max;
     }
