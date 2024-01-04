@@ -9,7 +9,7 @@ class Solution {
     }
      // count.merge(num, 1, Integer::sum);
 
-    for (final int freq : count.values()) {
+    for (int freq : count.values()) {
       // If freq == 3k, need k operations.
       // If freq == 3k + 1 = 3*(k - 1) + 2*2, need k + 1 operations.
       // If freq == 3k + 2, need k + 1 operations.
