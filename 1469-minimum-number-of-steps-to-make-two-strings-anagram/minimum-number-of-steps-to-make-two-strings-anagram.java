@@ -1,26 +1,21 @@
 class Solution {
     public int minSteps(String s, String t) {
+        int[] count = new int[26]; // Array to store character counts
 
-        int count= 0;
-        HashMap<Character,Integer> map = new  HashMap<>();
-
-        for(int i=0;i<s.length();i++)
-        {
-            char ch= s.charAt(i);
-            map.put(ch,map.getOrDefault(ch,0)+1);
-        } 
-
-        for(int i=0;i<t.length();i++)
-        {
-            char ch=t.charAt(i);
-
-            if (map.containsKey(ch) && map.get(ch) > 0) {
-                map.put(ch, map.get(ch) - 1);
-            } else {
-                count++;
-            }
+        for (char ch : s.toCharArray()) {
+            count[ch - 'a']++;
         }
 
-        return count;
+        for (char ch : t.toCharArray()) {
+            count[ch - 'a']--;
+        }
+
+        int steps = 0;
+
+        for (int i = 0; i < 26; i++) {
+            steps += Math.max(0, count[i]); // Consider only characters in excess in t
+        }
+
+        return steps;
     }
 }
