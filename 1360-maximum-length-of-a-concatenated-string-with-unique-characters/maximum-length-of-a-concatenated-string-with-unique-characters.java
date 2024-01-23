@@ -1,5 +1,5 @@
-// import java.util.HashSet;
-// import java.util.List;
+import java.util.HashSet;
+import java.util.List;
 
 public class Solution {
     /**
@@ -14,13 +14,13 @@ public class Solution {
     }
 
     private int maxLengthHelper(List<String> arr, int index, String current) {
-        // Check if the current string has unique characters
-        HashSet<Character> uniqueCharactersSet = new HashSet<>();
-        for (char ch : current.toCharArray()) {
-            if (!uniqueCharactersSet.add(ch)) {
-                // If a character is repeated, return 0 as this is not a valid subsequence
-                return 0;
-            }
+        // Sort the characters in the current string
+        String sortedString = sortString(current);
+
+        // Check if the sorted string has unique characters
+        if (!hasUniqueCharacters(sortedString)) {
+            // If not unique, return 0 as this is not a valid subsequence
+            return 0;
         }
 
         int maxLength = current.length();
@@ -32,5 +32,21 @@ public class Solution {
         }
 
         return maxLength;
+    }
+
+    private String sortString(String s) {
+        char[] charArray = s.toCharArray();
+        Arrays.sort(charArray);
+        return new String(charArray);
+    }
+
+    private boolean hasUniqueCharacters(String s) {
+        HashSet<Character> uniqueCharactersSet = new HashSet<>();
+        for (char ch : s.toCharArray()) {
+            if (!uniqueCharactersSet.add(ch)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
